@@ -70,8 +70,14 @@
         <div class="dropdown-box mt-10 absolute w-56 top-0 right-0 z-20">
             <div class="dropdown-box__content box bg-theme-38 text-white">
                 <div class="p-4 border-b border-theme-40">
-                    <div class="font-medium">Administrator</div>
-                    <div class="text-xs text-theme-41">Admin</div>
+                    <div class="font-medium">
+                        @auth
+                            Email: {{ auth()->user()->email }}
+                        @else
+                            Pengguna Belum Terautentikasi
+                        @endauth
+                    </div>
+                    <!-- Tampilkan informasi pengguna yang diperlukan -->
                 </div>
                 <div class="p-2">
                     <a href=""
@@ -82,13 +88,19 @@
                         <i data-feather="lock" class="w-4 h-4 mr-2"></i> Reset Password </a>
                 </div>
                 <div class="p-2 border-t border-theme-40">
-                    <a href=""
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                         class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md">
-                        <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>
+                        <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- END: Account Menu -->
 </div>
 <!-- END: Top Bar -->

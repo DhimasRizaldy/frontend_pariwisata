@@ -1,9 +1,9 @@
 {{-- mainLayoutUser --}}
-@extends('layout.mainLayoutUser')
+@extends('layout.mainLogin')
 {{-- end mainLayoutUser --}}
 
 {{-- title --}}
-@section('title_template')
+@section('title')
     <title>WisataLampung | Login</title>
 @endsection
 {{-- end title --}}
@@ -35,15 +35,14 @@
                 <!-- BEGIN: Login Info -->
                 <div class="hidden xl:flex flex-col min-h-screen">
                     <a href="" class="-intro-x flex items-center pt-5">
-                        <img alt="Midone Tailwind HTML Admin Template" class="w-6"
-                            src="{{ asset('dist/images/logo.svg') }}" />
+                        <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="dist/images/logo.svg" />
                         <span class="text-white text-lg ml-3">
                             Wisata<span class="font-medium">Lampung</span>
                         </span>
                     </a>
                     <div class="my-auto">
                         <img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16"
-                            src="{{ asset('dist/images/illustration.svg') }}" />
+                            src="dist/images/illustration.svg" />
                         <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
                             A few more clicks to
                             <br />
@@ -66,44 +65,49 @@
                             A few more clicks to sign in to your account. Manage all your
                             wisata lampung accounts in one place
                         </div>
-                        <div class="intro-x mt-8">
-                            <input type="text" class="intro-x login__input input input--lg border border-gray-300 block"
-                                placeholder="Email" />
-                            <input type="password"
-                                class="intro-x login__input input input--lg border border-gray-300 block mt-4"
-                                placeholder="Password" />
-                        </div>
-                        <div class="intro-x flex text-gray-700 text-xs sm:text-sm mt-4">
-                            <div class="flex items-center mr-auto">
-                                <input type="checkbox" class="input border mr-2" id="remember-me" />
-                                <label class="cursor-pointer select-none" for="remember-me">Remember me</label>
+                        <form method="post" action="{{ route('Login') }}">
+                            @csrf <!-- Tambahkan CSRF token untuk keamanan -->
+                            <div class="intro-x mt-8">
+                                <input type="text" id="email" name="email"
+                                    class="intro-x login__input input input--lg border border-gray-300 block"
+                                    placeholder="Email" />
+                                <input type="password" id="password" name="password"
+                                    class="intro-x login__input input input--lg border border-gray-300 block mt-4"
+                                    placeholder="Password" />
                             </div>
-                            <a href="">Forgot Password?</a>
-                        </div>
-                        <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                            <button class="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">
-                                <a href="{{ route('admin/dashboardAdmin') }}"
-                                    class="top-menu {{ Route::is('admin/dashboardAdmin') ? 'top-menu--active' : '' }}">Login</a>
-                            </button>
-                            <button
-                                class="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 mt-3 xl:mt-0">
-                                <a href="{{ route('Register') }}"
-                                    class="top-menu {{ Route::is('Register') ? 'top-menu--active' : '' }}">Sign up</a>
-                            </button>
-                        </div>
+                            <div class="intro-x flex text-gray-700 text-xs sm:text-sm mt-4">
+                                <div class="flex items-center mr-auto">
+                                    <input type="checkbox" class="input border mr-2" id="remember-me" />
+                                    <label class="cursor-pointer select-none" for="remember-me">Remember me</label>
+                                </div>
+                                <a href="">Forgot Password?</a>
+                            </div>
+                            <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
+                                <button type="submit"
+                                    class="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">
+                                    Login
+                                </button>
+                                <button
+                                    class="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 mt-3 xl:mt-0">
+                                    <a href="{{ route('Register') }}"
+                                        class="top-menu {{ Route::is('Register') ? 'top-menu--active' : '' }}">Sign up</a>
+                                </button>
+                            </div>
+                        </form>
                         <div class="intro-x mt-10 xl:mt-24 text-gray-700 text-center xl:text-left">
-                            By signin up, you agree to our
+                            By signing up, you agree to our
                             <br />
                             <a class="text-theme-1" href="">Terms and Conditions</a> &
                             <a class="text-theme-1" href="">Privacy Policy</a>
                         </div>
                     </div>
                 </div>
+
                 <!-- END: Login Form -->
             </div>
         </div>
     </div>
-    <!-- END ISI KONTEN -->
+    <!-- BEGIN: Login Info -->
 @endsection
 
 @section('footerUser')

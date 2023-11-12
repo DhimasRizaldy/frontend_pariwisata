@@ -20,10 +20,21 @@ use App\Http\Controllers\DashboardUserControllers;
 // End User Controllers
 use Illuminate\Support\Facades\Route;
 
+Route::group(['middleware' => ['web', 'auth']], function () {
+    // Rute yang memerlukan autentikasi
+    Route::post('/logout', [AuthControllers::class, 'logout'])->name('logout');
+});
+
+// Rute login di luar grup middleware 'auth'
+Route::post('/login', [AuthControllers::class, 'login'])->name('login');
 
 // Router Auth Login & Register
 Route::get("login", [AuthControllers::class, 'viewLogin'])->name('Login');
 Route::get("register", [AuthControllers::class, 'viewRegister'])->name('Register');
+
+// Route::post('/login', [AuthControllers::class, 'login'])->name('login');
+
+// Route::post('/logout', [AuthControllers::class, 'logout'])->name('logout');
 // End Router Auth Login & Register
 
 // Router Dashboard User

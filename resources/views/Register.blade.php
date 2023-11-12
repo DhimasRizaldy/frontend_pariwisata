@@ -1,9 +1,9 @@
 {{-- mainLayoutUser --}}
-@extends('layout.mainLayoutUser')
+@extends('layout.mainLogin')
 {{-- end mainLayoutUser --}}
 
 {{-- title --}}
-@section('title_template')
+@section('title')
     <title>WisataLampung | Register</title>
 @endsection
 {{-- end title --}}
