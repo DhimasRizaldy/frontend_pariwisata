@@ -1,5 +1,10 @@
 <?php
 
+// Auth Controllers
+use App\Http\Controllers\AuthControllers;
+// End Auth Controllers
+
+// Admin Controllers
 use App\Http\Controllers\DashboardControllers;
 use App\Http\Controllers\UserControllers;
 use App\Http\Controllers\ProfileControllers;
@@ -8,13 +13,27 @@ use App\Http\Controllers\KategoriControllers;
 use App\Http\Controllers\WisataControllers;
 use App\Http\Controllers\RekomendasiControllers;
 use App\Http\Controllers\UlasanControllers;
+// End Admin Controllers
+
+// User Controllers
+use App\Http\Controllers\DashboardUserControllers;
+// End User Controllers
 use Illuminate\Support\Facades\Route;
 
 
+// Router Auth Login & Register
+Route::get("login", [AuthControllers::class, 'viewLogin'])->name('Login');
+Route::get("register", [AuthControllers::class, 'viewRegister'])->name('Register');
+// End Router Auth Login & Register
 
-// Router Dashboard
+// Router Dashboard User
+Route::get("/", [DashboardUserControllers::class, 'viewMain'])->name('user/dashboardUser');
+// End Router Dashboard User
+
+
+// Router Dashboard Admin
 Route::get("admin/dashboard", [DashboardControllers::class, 'viewDashboard'])->name('admin/dashboardAdmin');
-// End Router Dashboard
+// End Router Dashboard Admin
 
 // Router User
 Route::get("admin/user", [UserControllers::class, 'viewUser'])->name('admin/vw_user/view_user');
@@ -43,3 +62,8 @@ Route::get("admin/Kategoriwisata", [KategoriControllers::class, 'viewKategori'])
 // Router Rekomendasi
 Route::get("admin/rekomendasi", [RekomendasiControllers::class, 'viewRekomendasi'])->name('admin/vw_rekomendasi/view_rekomendasi');
 // End Router Rekomendasi
+
+
+// Router Dashboard User
+Route::get("user/dashboard", [DashboardUserControllers::class, 'viewDashboard'])->name('user/dashboardUser');
+// End Router Dashboard User

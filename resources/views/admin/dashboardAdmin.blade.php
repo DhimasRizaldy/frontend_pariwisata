@@ -389,7 +389,12 @@
     </div>
 
     {{-- javascript --}}
-    
+
     {{-- end javascript --}}
 @endsection
+
+@section('footerAdmin')
+    @include('layout.footerAdmin')
+@endsection
+
 {{-- end contentAdmin --}}

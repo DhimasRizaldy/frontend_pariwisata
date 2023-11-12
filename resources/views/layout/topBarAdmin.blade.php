@@ -3,11 +3,11 @@
 <div class="top-bar">
     <!-- BEGIN: Breadcrumb -->
     <div class="-intro-x breadcrumb mr-auto hidden sm:flex">
-        <a href="{{ url('/') }}" class="breadcrumb--active">Home</a> <i data-feather="chevron-right"
+        <a href="{{ url('admin/') }}" class="breadcrumb--active">Aplication</a> <i data-feather="chevron-right"
             class="breadcrumb__icon"></i>
 
         @php
-            $breadcrumbs = explode('/', Request::path());
+            $breadcrumbs = explode('admin/', Request::path());
             $breadcrumbPath = '';
         @endphp
 

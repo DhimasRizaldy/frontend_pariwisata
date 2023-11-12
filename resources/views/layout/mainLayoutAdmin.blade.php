@@ -43,6 +43,10 @@
 
     </div>
 
+    {{-- footerAdmin --}}
+    @yield('footerAdmin')
+    {{-- End footerAdmin --}}
+
     {{-- javascript --}}
     <script src="{{ asset('/dist/js/app.js') }}"></script>
     {{-- end javascript --}}

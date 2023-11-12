@@ -2,53 +2,51 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    {{-- csrf token --}}
-    <meta name="_token" content="{{ csrf_token() }}">
-    {{-- End csrf token --}}
-
-    {{-- Title --}}
-    @yield('title_template')
-    {{-- End Title --}}
-
-    {{-- Asset cdn, css, tailwind css --}}
+    <meta charset="utf-8">
+    <link href="{{ asset('dist/images/logo.svg') }}" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Midone admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
+    <meta name="keywords"
+        content="admin template, Midone admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="LEFT4CODE">
+    <title>Wisata Lampung | Dashboard</title>
+    <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="{{ asset('/dist/css/app.css') }}" />
-    {{-- End Asset cdn, css, tailwind css --}}
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-        }
-    </style>
-
+    <!-- END: CSS Assets-->
 </head>
 
 {{-- Body --}}
 
-<body>
+<body class="app">
 
-    {{-- Header --}}
+    {{-- mobileNavUser --}}
+    @yield('mobileNavUser')
+    {{-- End mobileNavUser --}}
 
-    {{-- End Header --}}
+    {{-- topBarUser --}}
+    @yield('topBarUser')
+    {{-- End topBarUser --}}
 
-    {{-- sidebar --}}
+    {{-- topMenuUser --}}
+    @yield('topMenuUser')
+    {{-- End topMenuUser --}}
 
-    {{-- End sidebar --}}
+    <div class="content">
 
-    {{-- content --}}
+        {{-- contentUser --}}
+        @yield('contentUser')
+        {{-- End contentUser --}}
 
-    {{-- End content --}}
+    </div>
 
+    {{-- footerUser --}}
+    @yield('footerUser')
+    {{-- End footerUser --}}
 
-    {{-- cdn javascript --}}
-
-    {{-- end cdn javascript --}}
+    {{-- javascript --}}
+    <script src="{{ asset('/dist/js/app.js') }}"></script>
+    {{-- end javascript --}}
 
     @stack('scripts')
 </body>

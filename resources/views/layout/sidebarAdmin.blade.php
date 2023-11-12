@@ -9,43 +9,50 @@
     <div class="side-nav__devider my-6"></div>
     <ul>
         <li>
-            <a href="{{ route('admin/dashboardAdmin') }}" class="side-menu">
+            <a href="{{ route('admin/dashboardAdmin') }}"
+                class="side-menu {{ Route::is('admin/dashboardAdmin') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i data-feather="home"></i> </div>
                 <div class="side-menu__title"> Dashboard </div>
             </a>
         </li>
         <li>
-            <a href="{{ route('admin/vw_user/view_user') }}" class="side-menu">
+            <a href="{{ route('admin/vw_user/view_user') }}"
+                class="side-menu {{ Route::is('admin/vw_user/view_user') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i data-feather="inbox"></i> </div>
                 <div class="side-menu__title"> Data Users </div>
             </a>
         </li>
         <li>
-            <a href="{{ route('admin/vw_wisata/view_wisata') }}" class="side-menu">
+            <a href="{{ route('admin/vw_wisata/view_wisata') }}"
+                class="side-menu {{ Route::is('admin/vw_wisata/view_wisata') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i data-feather="hard-drive"></i> </div>
                 <div class="side-menu__title"> Data Wisata </div>
             </a>
         </li>
         <li>
-            <a href="{{ route('admin/vw_kategoriwisata/view_kategoriwisata') }}" class="side-menu">
+            <a href="{{ route('admin/vw_kategoriwisata/view_kategoriwisata') }}"
+                class="side-menu {{ Route::is('admin/vw_kategoriwisata/view_kategoriwisata') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i data-feather="credit-card"></i> </div>
                 <div class="side-menu__title"> Data Kategori Wisata </div>
             </a>
         </li>
         <li>
-            <a href="{{ route('admin/vw_daerah/view_daerah') }}" class="side-menu">
+            <a href="{{ route('admin/vw_daerah/view_daerah') }}"
+                class="side-menu {{ Route::is('admin/vw_daerah/view_daerah') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i data-feather="message-square"></i> </div>
                 <div class="side-menu__title"> Data Daerah </div>
             </a>
         </li>
         <li>
-            <a href="{{ route('admin/vw_rekomendasi/view_rekomendasi') }}" class="side-menu">
+            <a href="{{ route('admin/vw_rekomendasi/view_rekomendasi') }}"
+                class="side-menu {{ Route::is('admin/vw_rekomendasi/view_rekomendasi') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i data-feather="file-text"></i> </div>
                 <div class="side-menu__title"> Data Rekomendasi </div>
             </a>
         </li>
         <li>
-            <a href="{{ route('admin/vw_ulasan/view_ulasan') }}" class="side-menu">
+            <a href="{{ route('admin/vw_ulasan/view_ulasan') }}"
+                class="side-menu {{ Route::is('admin/vw_ulasan/view_ulasan') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i data-feather="file-text"></i> </div>
                 <div class="side-menu__title"> Data Ulasan </div>
             </a>
