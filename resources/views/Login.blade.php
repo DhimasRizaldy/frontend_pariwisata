@@ -65,7 +65,7 @@
                             A few more clicks to sign in to your account. Manage all your
                             wisata lampung accounts in one place
                         </div>
-                        <form method="post" action="{{ route('Login') }}">
+                        <form method="post" action="{{ route('login') }}">
                             @csrf <!-- Tambahkan CSRF token untuk keamanan -->
                             <div class="intro-x mt-8">
                                 <input type="text" id="email" name="email"

@@ -81,11 +81,12 @@ class AuthControllers extends Controller
             ], 401);
         }
     }
+
     public function logout()
     {
         auth()->logout(); // Logout pengguna
 
-        return redirect()->route('/'); // Ganti 'user.dashboard' sesuai dengan nama route halaman dashboardUser Anda
+        return redirect('/'); // Ganti '/' sesuai dengan route yang diinginkan setelah logout
     }
 
 

@@ -15,6 +15,6 @@ class DashboardControllers extends Controller
     // Buat fungsi index (tampil dashboard)
     function viewDashboard()
     {
-        return view("Admin/dashboardAdmin");
+        return view("admin/dashboardAdmin");
     }
 }

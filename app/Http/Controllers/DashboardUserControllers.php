@@ -16,11 +16,16 @@ class DashboardUserControllers extends Controller
 
     function viewMain()
     {
-        return view("User/dashboardUser");
+        return view("user/dashboardUser");
     }
 
     function viewDashboard()
     {
-        return view("User/dashboardUser");
+        return view("user/dashboardUser");
+    }
+
+    function viewTentangKami()
+    {
+        return view("user/vw_tentangkami/tentangKami");
     }
 }

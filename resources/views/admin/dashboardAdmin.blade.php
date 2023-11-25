@@ -122,14 +122,14 @@
                     <h2 class="text-lg font-medium truncate mr-5">
                         Rekomendasi By Users
                     </h2>
-                    <div class="flex items-center sm:ml-auto mt-3 sm:mt-0">
+                    {{-- <div class="flex items-center sm:ml-auto mt-3 sm:mt-0">
                         <button class="button box flex items-center text-gray-700"> <i data-feather="file-text"
                                 class="hidden sm:block w-4 h-4 mr-2"></i> Export to Excel </button>
                         <button class="ml-3 button box flex items-center text-gray-700"> <i data-feather="file-text"
                                 class="hidden sm:block w-4 h-4 mr-2"></i> Export to PDF </button>
-                    </div>
+                    </div> --}}
                 </div>
-                <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                {{-- <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
                     <table class="table table-report sm:mt-2">
                         <thead>
                             <tr>
@@ -314,7 +314,7 @@
                         <option>35</option>
                         <option>50</option>
                     </select>
-                </div>
+                </div> --}}
             </div>
             <!-- END: Weekly Top Seller -->
         </div>

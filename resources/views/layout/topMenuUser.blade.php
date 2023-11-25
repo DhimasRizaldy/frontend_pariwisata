@@ -62,7 +62,7 @@
             </a>
         </li>
         <li>
-            <a href="top-menu-tentang-kami.html" class="top-menu">
+            <a href="{{ route('user/vw_tentangkami/tentangKami') }}" class="top-menu">
                 <div class="top-menu__icon"> <i data-feather="home"></i> </div>
                 <div class="top-menu__title"> Tentang Kami </div>
             </a>

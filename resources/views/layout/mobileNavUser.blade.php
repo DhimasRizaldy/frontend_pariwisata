@@ -68,7 +68,7 @@
             </a>
         </li>
         <li>
-            <a href="side-menu-post.html" class="menu">
+            <a href="{{ route('user/vw_tentangkami/tentangKami') }}" class="menu">
                 <div class="menu__icon"> <i data-feather="file-text"></i> </div>
                 <div class="menu__title"> Tentang kami </div>
             </a>

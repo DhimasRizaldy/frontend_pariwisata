@@ -21,12 +21,17 @@ use App\Http\Controllers\DashboardUserControllers;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web', 'auth']], function () {
-    // Rute yang memerlukan autentikasi
+    // ...
     Route::post('/logout', [AuthControllers::class, 'logout'])->name('logout');
+    Route::get("/profile", [UserControllers::class, 'profile'])->name('admin.vw_user.userProfile');
+    // ...
 });
 
 // Rute login di luar grup middleware 'auth'
+Route::get('/login', [AuthControllers::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthControllers::class, 'login'])->name('login');
+
+
 
 // Router Auth Login & Register
 Route::get("login", [AuthControllers::class, 'viewLogin'])->name('Login');
@@ -39,6 +44,7 @@ Route::get("register", [AuthControllers::class, 'viewRegister'])->name('Register
 
 // Router Dashboard User
 Route::get("/", [DashboardUserControllers::class, 'viewMain'])->name('user/dashboardUser');
+Route::get("/dashboard", [DashboardUserControllers::class, 'viewMain'])->name('user/dashboardUser');
 // End Router Dashboard User
 
 
@@ -76,5 +82,9 @@ Route::get("admin/rekomendasi", [RekomendasiControllers::class, 'viewRekomendasi
 
 
 // Router Dashboard User
-Route::get("user/dashboard", [DashboardUserControllers::class, 'viewDashboard'])->name('user/dashboardUser');
+Route::get("/dashboard", [DashboardUserControllers::class, 'viewDashboard'])->name('user/dashboardUser');
+
+// Router tentang kami
+Route::get("/tentangKami", [DashboardUserControllers::class, 'viewTentangKami'])->name('user/vw_tentangkami/tentangKami');
+
 // End Router Dashboard User
