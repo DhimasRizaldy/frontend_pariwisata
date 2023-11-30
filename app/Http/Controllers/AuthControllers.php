@@ -10,84 +10,107 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthControllers extends Controller
 {
-    //fungsi constructor
-    function __construct()
-    {
-        $this->client = new \GuzzleHttp\Client();
-    }
+  //fungsi constructor
+  function __construct()
+  {
+    $this->client = new \GuzzleHttp\Client();
+  }
 
-    // Buat fungsi index (tampil dashboard)
+  // Buat fungsi index (tampil dashboard)
 
-    function viewLogin()
-    {
-        return view("Login");
-    }
+  function viewLogin()
+  {
+    return view("Login");
+  }
 
-    function viewRegister()
-    {
-        return view("Register");
-    }
+  function viewRegister()
+  {
+    return view("Register");
+  }
 
-    // login
+  // login
 
-    public function showLoginForm()
-    {
-        return view('login');
-    }
+  public function showLoginForm()
+  {
+    return view('login');
+  }
 
-    public function login(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+  public function login(Request $request)
+  {
+    $credentials = $request->validate([
+      'email' => 'required|email',
+      'password' => 'required',
+    ]);
 
-        // Membuat HTTP Client Laravel untuk mengirim permintaan ke URL API
-        $apiResponse = Http::post(env("API_URL") . "/auth/login/", $credentials);
+    // Membuat HTTP Client Laravel untuk mengirim permintaan ke URL API
+    $apiResponse = Http::post(env("API_URL") . "/auth/login/", $credentials);
 
-        if ($apiResponse->successful()) {
-            // Jika login berhasil di API
-            $userData = $apiResponse->json();
+    if ($apiResponse->successful()) {
+      // Jika login berhasil di API
+      $userData = $apiResponse->json();
 
-            // Mengecek apakah data pengguna diterima dari API
-            if (!empty($userData['data']['user'])) {
-                // Memeriksa role pengguna
-                $role = isset($userData['data']['user']['role']) ? $userData['data']['user']['role'] : null;
+      // Mengecek apakah data pengguna diterima dari API
+      if (!empty($userData['data']['user'])) {
+        // Memeriksa role pengguna
+        $role = isset($userData['data']['user']['role']) ? $userData['data']['user']['role'] : null;
 
-                // Redirect pengguna berdasarkan role
-                if ($role === 'user') {
-                    return view('user/dashboardUser', ['user' => $userData['data']['user']]);
-                } elseif ($role === 'admin') {
-                    return view('admin/dashboardAdmin', ['user' => $userData['data']['user']]);
-                } else {
-                    // Jika role tidak valid, tindakan yang sesuai
-                    return response()->json([
-                        'success' => false,
-                        'message' => 'Invalid user role from API',
-                    ], 401);
-                }
-            } else {
-                // Jika data pengguna kosong, tindakan yang sesuai
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Invalid user data from API',
-                ], 401);
-            }
+        // Redirect pengguna berdasarkan role
+        if ($role === 'user') {
+          return view('user/dashboardUser', ['user' => $userData['data']['user']]);
+        } elseif ($role === 'admin') {
+          return view('admin/dashboardAdmin', ['user' => $userData['data']['user']]);
         } else {
-            // Jika login gagal di API
-            return response()->json([
-                'success' => false,
-                'message' => 'Invalid credentials',
-            ], 401);
+          // Jika role tidak valid, tindakan yang sesuai
+          return response()->json([
+            'success' => false,
+            'message' => 'Invalid user role from API',
+          ], 401);
         }
+      } else {
+        // Jika data pengguna kosong, tindakan yang sesuai
+        return response()->json([
+          'success' => false,
+          'message' => 'Invalid user data from API',
+        ], 401);
+      }
+    } else {
+      // Jika login gagal di API
+      return response()->json([
+        'success' => false,
+        'message' => 'Invalid credentials',
+      ], 401);
+    }
+  }
+
+  public function logout()
+  {
+    auth()->logout(); // Logout pengguna
+
+    return redirect('/'); // Ganti '/' sesuai dengan route yang diinginkan setelah logout
+  }
+
+  // auth google
+  public function redirectToGoogle()
+  {
+    // Ubah URL callback sesuai dengan route API Anda
+    $redirectUrl = config('services.google.redirect') . '/api/v1/auth/google/callback';
+
+    return Socialite::driver('google')->redirectUrl($redirectUrl)->redirect();
+  }
+
+  public function handleGoogleCallback()
+  {
+    try {
+      $user = Socialite::driver('google')->user();
+    } catch (\Exception $e) {
+      return response()->json(['message' => 'Google Login Gagal!'], 500);
     }
 
-    public function logout()
-    {
-        auth()->logout(); // Logout pengguna
+    // Proses autentikasi atau registrasi pengguna di sini
 
-        return redirect('/'); // Ganti '/' sesuai dengan route yang diinginkan setelah logout
-    }
+    // Sebagai contoh, Anda dapat mengirimkan token atau informasi pengguna sebagai respons JSON
+    return response()->json(['user' => $user]);
+  }
 
 
 }

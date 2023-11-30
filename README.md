@@ -4,6 +4,9 @@ git clone https://github.com/DhimasRizaldy/frontend_pariwisata.git
 ### inisialisasi project
 composer install / composer update
 
+### copy file .env.example
+buat file baru nama file nya .env
+
 ### running project :
 php artisan serve
 
