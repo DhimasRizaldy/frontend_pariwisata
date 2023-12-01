@@ -41,6 +41,7 @@
         "summernote": "^0.8.20",
         "svg-loaders": "^0.2.0",
         "tooltipster": "^4.2.8",
+        "vercel": "^32.6.0",
         "vue-template-compiler": "^2.7.15"
     }
 }
