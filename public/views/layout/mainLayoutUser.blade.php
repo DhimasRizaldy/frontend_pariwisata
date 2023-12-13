@@ -12,7 +12,7 @@
     <meta name="author" content="LEFT4CODE">
     <title>Wisata Lampung | Dashboard</title>
     <!-- BEGIN: CSS Assets-->
-    <link rel="stylesheet" href="{{ asset('/dist/css/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}" />
     <!-- END: CSS Assets-->
 </head>
 
